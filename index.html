@@ -111,6 +111,16 @@
   .step h3 { font: 700 18px var(--display); letter-spacing: .07em; text-transform: uppercase; margin-bottom: 6px; }
   .step p { color: var(--sub); font-size: 15px; }
 
+  /* ---- story / the idea ---- */
+  #story { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .story-quote { max-width: 760px; margin: 0 auto 64px; text-align: center; }
+  .story-quote blockquote { font: 700 clamp(28px, 4.5vw, 44px)/1.15 var(--display); letter-spacing: .05em; text-transform: uppercase; }
+  .story-quote blockquote::before { content: '\201C'; color: var(--gold); }
+  .story-quote blockquote::after { content: '\201D'; color: var(--gold); }
+  .story-quote cite { display: block; margin-top: 16px; color: var(--gold); font: 600 13px var(--body); font-style: normal; letter-spacing: .18em; text-transform: uppercase; }
+  .card .era { color: var(--gold); font: 600 12px var(--body); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 14px; }
+  .story-close { max-width: 640px; margin: 52px auto 0; text-align: center; color: var(--sub); font-size: 16px; }
+
   /* ---- buy ---- */
   #buy { background: radial-gradient(ellipse 70% 80% at 50% 110%, #1b1826 0%, var(--bg) 70%); }
   .price-card {
@@ -154,6 +164,7 @@
       <div class="links">
         <a href="#features">Features</a>
         <a href="#how">How it works</a>
+        <a href="#story">The idea</a>
         <a href="#faq">FAQ</a>
       </div>
       <a class="btn btn-gold" href="#buy">Get it — &euro;1</a>
@@ -221,6 +232,38 @@
         <div class="step"><h3>Live with it</h3>
           <p>That's it. Every Monday the grid gains a square — and quietly asks what you'll do with the empty ones.</p></div>
       </div>
+    </div>
+  </section>
+
+  <section id="story">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>An idea with two thousand years of history</h2>
+        <p><em>Memento mori</em> is Latin for "remember that you must die." It sounds dark.
+          It's the opposite: for over two thousand years it has been a tool for living well.</p>
+      </div>
+      <div class="story-quote">
+        <blockquote>You could leave life right now.</blockquote>
+        <cite>Marcus Aurelius &middot; Meditations</cite>
+      </div>
+      <div class="grid3">
+        <div class="card"><div class="era">Ancient Rome</div><h3>The whisper in the parade</h3>
+          <p>Tradition holds that when a Roman general paraded through the city in triumph, a slave stood
+            behind him with a single job: to whisper that he, too, was mortal. At the peak of glory —
+            a reminder that it all ends.</p></div>
+        <div class="card"><div class="era">The Stoics</div><h3>A tool, not a threat</h3>
+          <p>The Stoic philosophers made it a daily practice. Seneca advised ending each day as if life
+            were complete. Epictetus told his students to keep death before their eyes. And Marcus
+            Aurelius — the most powerful man alive — kept writing it in his private journal. Not to be
+            morbid, but because nothing sorts out your priorities faster.</p></div>
+        <div class="card"><div class="era">Today</div><h3>From coin to desktop</h3>
+          <p>Medieval painters put skulls and hourglasses in their art for the same reason. Today, author
+            Ryan Holiday (<em>The Daily Stoic</em>) carries a memento mori medallion in his pocket — his
+            point being that remembering death is what gives your days priority and meaning. This
+            wallpaper is that same old practice, drawn on your screen.</p></div>
+      </div>
+      <p class="story-close">Seeing the weeks you've spent makes the ones that remain feel real.
+        That's the whole trick — and it still works, twenty centuries on.</p>
     </div>
   </section>
 
