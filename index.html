@@ -348,12 +348,42 @@
   footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
   footer a { color: var(--sub); text-decoration: none; }
   footer a:hover { color: var(--text); }
-  .contact-box { max-width: 560px; margin: 26px auto 0; }
-  .contact-box form { display: grid; gap: 10px; }
-  .contact-box input, .contact-box textarea { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 11px 12px; color: var(--text); font: 15px var(--body); width: 100%; resize: vertical; }
-  .contact-box input:focus, .contact-box textarea:focus { outline: none; border-color: var(--gold); }
-  .contact-box .hp { position: absolute; left: -9999px; }
+  /* ---- contact popup ---- */
+  #contact {
+    position: fixed; inset: 0; z-index: 60;
+    display: flex; align-items: center; justify-content: center; padding: 24px;
+    background: rgba(5,5,8,.72); backdrop-filter: blur(8px);
+    opacity: 0; pointer-events: none;
+    transition: opacity .35s ease;
+  }
+  #contact.open { opacity: 1; pointer-events: auto; }
+  #contact[hidden] { display: none; }
+  .contact-card {
+    position: relative; max-width: 480px; width: 100%;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 20px;
+    padding: 36px 32px 28px;
+    box-shadow: 0 40px 120px rgba(0,0,0,.55), 0 0 0 1px rgba(238,197,92,.07);
+    opacity: 0; transform: translateY(28px) scale(.98);
+    transition: transform .5s cubic-bezier(.16,1,.3,1), opacity .35s ease;
+  }
+  #contact.open .contact-card { opacity: 1; transform: none; }
+  .contact-card .kicker { font: 600 12px var(--body); letter-spacing: .28em; color: var(--gold); text-transform: uppercase; }
+  .contact-card h2 {
+    font: 700 clamp(24px, 4vw, 30px)/1.1 var(--display);
+    letter-spacing: .04em; text-transform: uppercase; margin: 12px 0 18px;
+  }
+  .contact-card form { display: grid; gap: 10px; }
+  .contact-card input, .contact-card textarea { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 11px 12px; color: var(--text); font: 15px var(--body); width: 100%; resize: vertical; }
+  .contact-card input:focus, .contact-card textarea:focus { outline: none; border-color: var(--gold); }
+  .contact-card .hp { position: absolute; left: -9999px; }
+  .contact-close {
+    position: absolute; top: 12px; right: 14px; padding: 6px 10px;
+    background: none; border: 0; cursor: pointer;
+    color: var(--faint); font: 400 24px/1 var(--body);
+  }
+  .contact-close:hover { color: var(--text); }
   .contact-status { font-size: 14px; color: var(--sub); min-height: 18px; margin: 0; }
+  @media (max-width: 560px) { .contact-card { padding: 30px 22px 24px; } }
 
   /* ---- intro popup ---- */
   #intro {
@@ -412,7 +442,7 @@
     html { scroll-behavior: auto; }
     .scroll-hint svg { animation: none; }
     .st .inner { transition: none; }
-    #intro, .intro-card { transition: none; }
+    #intro, .intro-card, #contact, .contact-card { transition: none; }
   }
 </style>
 </head>
@@ -635,7 +665,13 @@
     <div>&copy; <span id="year"></span> Memento Mori &middot; Made in the Netherlands</div>
     <div><a href="#" id="contactOpen">Contact</a></div>
   </div>
-  <div class="wrap contact-box" id="contactBox" hidden>
+</footer>
+
+<div id="contact" role="dialog" aria-modal="true" aria-labelledby="contactTitle" hidden>
+  <div class="contact-card">
+    <button class="contact-close" id="contactClose" aria-label="Close">&times;</button>
+    <p class="kicker">Questions, bugs, ideas</p>
+    <h2 id="contactTitle">Get in touch</h2>
     <form id="contactForm">
       <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <input type="email" name="email" required placeholder="Your email" aria-label="Your email">
@@ -644,7 +680,7 @@
       <p class="contact-status" id="contactStatus"></p>
     </form>
   </div>
-</footer>
+</div>
 
 <script>
   // Stripe donation link (pay what you want). Leeg = knop toont "on the house".
@@ -726,11 +762,27 @@
 
   /* ================= contact form (FormSubmit relay; alias hides the address) ================= */
   const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/074018157bb47f122903f922e2a7064f';
+  const contactModal = document.getElementById('contact');
+  function openContact() {
+    contactModal.hidden = false;
+    void contactModal.offsetWidth; // force a style pass so the transition animates from the hidden state
+    contactModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => contactModal.querySelector('input[type=email]').focus(), 250);
+  }
+  function closeContact() {
+    contactModal.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { contactModal.hidden = true; }, 400);
+  }
   document.getElementById('contactOpen').addEventListener('click', (e) => {
     e.preventDefault();
-    const box = document.getElementById('contactBox');
-    box.hidden = !box.hidden;
-    if (!box.hidden) box.querySelector('input[type=email]').focus();
+    openContact();
+  });
+  document.getElementById('contactClose').addEventListener('click', closeContact);
+  contactModal.addEventListener('click', (e) => { if (e.target === contactModal) closeContact(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !contactModal.hidden) closeContact();
   });
   document.getElementById('contactForm').addEventListener('submit', (e) => {
     e.preventDefault();
