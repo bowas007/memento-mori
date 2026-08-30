@@ -1,6 +1,6 @@
 {
-    "version":  "1.1.0",
-    "url":  "https://mementomoriwallpaper.com/updates/MementoMori-1.1.0.zip",
-    "sha256":  "EBA24931DE77082CD91BD21C47FD4E7BE7AE071D6D9B5F9C555B00A22A993015",
-    "notes":  "New scrollytelling website, porcelain light theme, palette presets in settings, theme switch fix"
+    "version":  "1.1.1",
+    "url":  "https://mementomoriwallpaper.com/updates/MementoMori-1.1.1.zip",
+    "sha256":  "1C58D94572757A25F9C20E159D3F7C71BEF32273B41F9655A7FAD147B66992A6",
+    "notes":  "Silent installs no longer launch the settings UI; Apps and Features entry no longer includes the version in its name"
 }
