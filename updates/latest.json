@@ -1,6 +1,7 @@
 {
-    "version":  "1.1.1",
-    "url":  "https://mementomoriwallpaper.com/updates/MementoMori-1.1.1.zip",
-    "sha256":  "1C58D94572757A25F9C20E159D3F7C71BEF32273B41F9655A7FAD147B66992A6",
-    "notes":  "Silent installs no longer launch the settings UI; Apps and Features entry no longer includes the version in its name"
+    "version":  "1.2.0",
+    "url":  "https://mementomoriwallpaper.com/updates/MementoMori-1.2.0.zip",
+    "sha256":  "4795F5D20F2EABE534C263DB26D3D45E944F0E78D025260948F1685BAA4AF5CD",
+    "signature":  "eiw0IFQouaESgNDuug7GEf+iJFk36CTc+j68/bWv6vUq4HDfJIjZQkh4YJQ2MzVlIaDq6684ZHLRW6pRLYjfGqV50XYkGMhKOz6c+3j8nkl/fIu9y6b6O2gkbk6ITyOQkE3Xa6pFG90FP29cC0lbcHDps30bh/1ehOVncDF04j+h/IU8cQgG2fmj7312HYG2Gao9OSGSUmZiQRhnQl4hs7eTRyopopnzQWkdiLAll/LCO3XYBp12qcvlHaj0i5t6tyJ3mQ7u2BPQtVpJFWQWarLFqqk3+FesOoAQE4Upr8N3uzh/knCOpNmPEFuWIum3Fkftg2EzjfT00Nn+diKPzqOK+3E+mUIjWqOavUiszY6d6kp0A/THlABsJRbkTcQsx+BWewmXSoR2+3TNv6LYTlkWYVJHcHuhR5BXzcowm96vI0qJHbuv8G1b44ceeiS/7DV5JqWaSLPtbIF3J9ZNvvGWbDfgnt/4AT8/tBgsvehfEH7mqffejYYrL6iEvtKT",
+    "notes":  "Daily Stoic quote on the wallpaper, refreshed every day. Updates are now signed with the publisher\u0027s offline key and verified before install."
 }
